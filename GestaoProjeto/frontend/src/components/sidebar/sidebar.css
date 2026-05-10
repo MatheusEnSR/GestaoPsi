@@ -1,0 +1,128 @@
+/* sidebar.css */
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background: #292929;
+  border-right: 1px solid #3a3a3a;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* ── Logo ── */
+#titulo {
+  padding: 18px 14px;
+  border-bottom: 1px solid #3a3a3a;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  width: 34px;
+  height: 34px;
+  background: #3C3489;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+#titulo h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+#titulo p {
+  font-size: 10px;
+  color: #A09EBB;
+  margin-top: 2px;
+}
+
+/* ── Navegação ── */
+#principal {
+  flex: 1;
+  padding: 10px 8px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#principal ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-label {
+  font-size: 9px;
+  color: #1703c7;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  padding: 12px 10px 4px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #A09EBB;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav-item:hover {
+  background: #121957;
+  color: #ffffff;
+}
+
+.nav-item.active {
+  background: #3C3489;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* ── Rodapé ── */
+.baixo {
+  padding: 12px 14px;
+  border-top: 1px solid #3a3a3a;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #3C3489;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.foot-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.foot-role {
+  font-size: 10px;
+  color: #A09EBB;
+}

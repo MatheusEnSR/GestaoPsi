@@ -1,16 +1,15 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// App.jsx
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-
-// Página
-import Home from './pages/home/Home';
+import Home from './pages/home/home';
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 

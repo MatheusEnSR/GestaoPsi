@@ -1,0 +1,314 @@
+/* home.css */
+/* home.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+  background: #f0eff7; /* ← garante fundo claro global */
+}
+
+.home {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  overflow: hidden;
+  width: 100%;
+  background: #f0eff7; /* ← fundo claro no layout */
+}
+
+.home-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  background: #f0eff7; /* ← fundo claro na coluna direita */
+}
+
+.cards {
+  flex: 1;
+  padding: 20px 24px;
+  background: #0e0e0ef5; /* ← fundo claro no conteúdo */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── Métricas ── */
+.metricas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.metrica-card {
+  background: #292929;
+  border: 1px solid #e8e6f8;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.metrica-label {
+  font-size: 10px;
+  color: #a09ebb;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.metrica-valor {
+  font-size: 24px;
+  font-weight: 600;
+  color: #A09EBB;
+  line-height: 1;
+}
+
+.metrica-hint {
+  font-size: 11px;
+  color: #a09ebb;
+  margin-top: 4px;
+}
+
+/* ── Grid principal ── */
+.dash-grid {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 14px;
+  flex: 1;
+}
+
+.dash-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Card genérico ── */
+.card {
+  background: #292929;
+   border: 1px solid #e8e6f8;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-head {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #292929;
+}
+
+.card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #A09EBB;
+}
+
+.card-action {
+  font-size: 11px;
+  color: #534ab7;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.card-action:hover { text-decoration: underline; }
+
+/* ── Tabela ── */
+.tbl-wrap { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+
+
+thead th {
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 9px;
+  font-weight: 600;
+  color: #a09ebb;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  border-bottom: 1px solid #e8e6f8;
+}
+
+tbody td {
+  padding: 9px 12px;
+  border-bottom: 1px solid #f0eef8;
+  color: #A09EBB;
+  vertical-align: middle;
+}
+
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: #121957; }
+.bold  { font-weight: 500; }
+.mono  { font-family: monospace; }
+
+/* Badge plano */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 500;
+  background: #eeedfe;
+  color: #3c3489;
+}
+
+/* Freq dots */
+.freq-dots { display: flex; gap: 3px; align-items: center; }
+.fd { width: 7px; height: 7px; border-radius: 50%; }
+.fd-on  { background: #534ab7; }
+.fd-off { background: #e8e6f8; }
+
+/* Chips */
+.chips { display: flex; gap: 3px; flex-wrap: wrap; }
+.chip {
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 500;
+}
+.chip-ok { background: #eaf3de; color: #3b6d11; }
+.chip-no { background: #fcebeb; color: #791f1f; }
+
+/* ── Mini calendário ── */
+.mini-cal { padding: 12px; }
+
+.cal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.cal-mes {
+  font-size: 12px;
+  font-weight: 600;
+  color: #A09EBB;
+}
+
+.cal-nav {
+  display: flex;
+  gap: 4px;
+}
+
+.cal-nav button {
+  background: none;
+  border: 1px solid #e8e6f8;
+  border-radius: 5px;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #a09ebb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  text-align: center;
+}
+
+.cal-dlbl {
+  font-size: 8px;
+  color: #a09ebb;
+  padding: 3px 0;
+  font-weight: 600;
+}
+
+.cal-day {
+  font-size: 10px;
+  padding: 4px 2px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #6b6887;
+  position: relative;
+}
+
+.cal-day:hover { background: #2e265f; }
+
+.cal-hoje {
+  background: #3c3489;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.cal-has::after {
+  content: '';
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #534ab7;
+}
+
+.cal-hoje.cal-has::after { background: #fff; }
+
+/* ── Sessões de hoje ── */
+.hoje-list {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hoje-label {
+  font-size: 9px;
+  color: #a09ebb;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.sessao-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sessao-bar {
+  width: 3px;
+  height: 30px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.sessao-nome {
+  font-size: 11px;
+  font-weight: 500;
+  color: #A09EBB;
+}
+
+.sessao-info {
+  font-size: 10px;
+  color: #a09ebb;
+}
