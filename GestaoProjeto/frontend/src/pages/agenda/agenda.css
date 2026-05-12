@@ -1,0 +1,379 @@
+/* pages/agenda/agenda.css */
+
+.agenda-page {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+}
+
+/* ── Topo ── */
+.agenda-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.agenda-titulo {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.agenda-sub {
+  font-size: 11px;
+  color: #a09ebb;
+  margin-top: 2px;
+}
+
+.agenda-acoes {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Alternador semana/mês */
+.vista-toggle {
+  display: flex;
+  background: #f0eef8;
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.vista-btn {
+  padding: 5px 14px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b6887;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.vista-btn.ativo {
+  background: #ffffff;
+  color: #3c3489;
+  box-shadow: 0 1px 4px rgba(60,52,137,0.12);
+}
+
+.btn-novo {
+  background: #3c3489;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+.btn-novo:hover { background: #2e2868; }
+
+/* ── Card ── */
+.card {
+  background: #fff;
+  border: 1px solid #e8e6f8;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.agenda-card {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Legenda ── */
+.legenda {
+  display: flex;
+  gap: 14px;
+  padding: 10px 16px;
+  border-bottom: 1px solid #e8e6f8;
+  background: #fafafa;
+  flex-wrap: wrap;
+}
+
+.leg-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  color: #6b6887;
+  font-weight: 500;
+}
+
+.leg-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+/* ── Vista semana ── */
+.semana-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.semana-grid {
+  display: grid;
+  grid-template-columns: 52px repeat(5, 1fr);
+  overflow-y: auto;
+  flex: 1;
+  border-top: 1px solid #e8e6f8;
+}
+
+.ag-head {
+  background: #fafafa;
+  padding: 8px 4px;
+  text-align: center;
+  border-bottom: 1px solid #e8e6f8;
+  border-right: 1px solid #f0eef8;
+  font-size: 10px;
+  color: #a09ebb;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.ag-time {
+  padding: 5px 6px;
+  text-align: right;
+  color: #a09ebb;
+  border-right: 1px solid #e8e6f8;
+  border-bottom: 1px solid #f0eef8;
+  font-size: 9px;
+  background: #fafafa;
+  font-family: monospace;
+}
+
+.ag-cell {
+  border-right: 1px solid #f0eef8;
+  border-bottom: 1px solid #f0eef8;
+  padding: 3px;
+  min-height: 36px;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.ag-cell:hover { background: #f5f4fc; }
+.ag-cell:last-child { border-right: none; }
+
+.ag-evt {
+  border-radius: 5px;
+  padding: 4px 6px;
+  font-size: 9px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-left: 3px solid transparent;
+  overflow: hidden;
+}
+
+.ag-evt span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Vista mês ── */
+.mes-wrap {
+  padding: 16px;
+}
+
+.mes-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.mes-dlbl {
+  font-size: 9px;
+  color: #a09ebb;
+  font-weight: 600;
+  text-align: center;
+  padding: 4px 0;
+  text-transform: uppercase;
+}
+
+.mes-dia {
+  border: 1px solid #e8e6f8;
+  border-radius: 8px;
+  padding: 8px 6px;
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: default;
+  transition: all 0.1s;
+}
+
+.mes-dia.mes-has {
+  cursor: pointer;
+  background: #f5f4fc;
+}
+.mes-dia.mes-has:hover {
+  border-color: #534ab7;
+  background: #eeedfe;
+}
+
+.mes-hoje {
+  border-color: #3c3489 !important;
+}
+
+.mes-num {
+  font-size: 11px;
+  font-weight: 500;
+  color: #6b6887;
+}
+
+.mes-hoje .mes-num {
+  color: #3c3489;
+  font-weight: 700;
+}
+
+.mes-dots {
+  display: flex;
+  gap: 3px;
+  flex-wrap: wrap;
+}
+
+.mes-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+/* ── Modal ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26,26,46,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  backdrop-filter: blur(2px);
+  animation: fadeIn 0.15s ease;
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: 16px;
+  width: 440px;
+  max-width: 95vw;
+  box-shadow: 0 8px 40px rgba(60,52,137,0.18);
+  animation: slideUp 0.18s ease;
+}
+
+.modal-head {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e8e6f8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-titulo {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.modal-fechar {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #a09ebb;
+  cursor: pointer;
+  line-height: 1;
+}
+.modal-fechar:hover { color: #1a1a2e; }
+
+.modal-body {
+  padding: 16px 20px;
+}
+
+.modal-footer {
+  padding: 12px 20px;
+  border-top: 1px solid #e8e6f8;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-full { grid-column: 1 / -1; }
+
+.f-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #6b6887;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.f-select {
+  width: 100%;
+  font-size: 12px;
+  border: 1.5px solid #e8e6f8;
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: #1a1a2e;
+  background: #fff;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23A09EBB' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+}
+.f-select:focus { border-color: #534ab7; box-shadow: 0 0 0 3px #eeedfe; }
+
+.btn-cancelar {
+  background: #fff;
+  color: #6b6887;
+  border: 1px solid #e8e6f8;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+}
+.btn-cancelar:hover { background: #f5f4fc; }
+
+.btn-salvar {
+  background: #3c3489;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+}
+.btn-salvar:hover { background: #2e2868; }
+
+@keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(12px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }

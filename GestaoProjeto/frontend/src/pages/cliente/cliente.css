@@ -1,0 +1,216 @@
+/* pages/clientes/clientes.css */
+
+.clientes-page {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── Topo ── */
+.clientes-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.clientes-titulo {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.clientes-sub {
+  font-size: 11px;
+  color: #a09ebb;
+  margin-top: 2px;
+}
+
+.clientes-acoes {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.clientes-busca {
+  border: 1.5px solid #e8e6f8;
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 12px;
+  color: #1a1a2e;
+  background: #fff;
+  outline: none;
+  width: 180px;
+  font-family: inherit;
+  transition: border-color 0.15s;
+}
+
+.clientes-busca:focus {
+  border-color: #534ab7;
+}
+
+.btn-novo {
+  background: #3c3489;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.btn-novo:hover {
+  background: #2e2868;
+}
+
+/* ── Card genérico ── */
+.card {
+  background: #fff;
+  border: 1px solid #e8e6f8;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ── Lista de clientes ── */
+.clientes-lista {
+  display: flex;
+  flex-direction: column;
+}
+
+.cliente-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0eef8;
+  transition: background 0.1s;
+}
+
+.cliente-row:last-child {
+  border-bottom: none;
+}
+
+.cliente-row:hover {
+  background: #fafafa;
+}
+
+/* Avatar */
+.cliente-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #eeedfe;
+  color: #3c3489;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* Info */
+.cliente-info {
+  flex: 1;
+}
+
+.cliente-nome {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1a2e;
+}
+
+.cliente-meta {
+  font-size: 11px;
+  color: #a09ebb;
+  margin-top: 2px;
+}
+
+/* Badge */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 500;
+  background: #eeedfe;
+  color: #3c3489;
+}
+
+/* Semana */
+.cliente-semana {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.cliente-val {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a2e;
+  font-family: monospace;
+}
+
+.cliente-hint {
+  font-size: 10px;
+  color: #a09ebb;
+}
+
+/* Botões de ação */
+.cliente-btns {
+  display: flex;
+  gap: 6px;
+  margin-left: 8px;
+}
+
+.icon-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  border: 1px solid #e8e6f8;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.icon-btn:hover {
+  background: #f4f3fb;
+}
+
+.icon-btn.danger:hover {
+  background: #fcebeb;
+  border-color: #f09595;
+}
+
+.icon-btn.danger:hover svg {
+  fill: #791f1f;
+}
+
+/* ── Total ── */
+.total-bar {
+  background: #fff;
+  border: 1px solid #e8e6f8;
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.total-label {
+  font-size: 12px;
+  color: #a09ebb;
+}
+
+.total-valor {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a2e;
+  font-family: monospace;
+}
