@@ -14,7 +14,6 @@ function SideBar({ onNavClick, paginaAtual }) {
   const navCadastro = [
     { id: 'novo-cliente', label: 'Novo cliente'  },
     { id: 'nova-sessao',  label: 'Nova sessão'   },
-    { id: 'novo-ano',     label: 'Adicionar ano' },
   ];
 
   return (

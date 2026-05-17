@@ -1,32 +1,32 @@
-/* pages/novaSessao/novaSessao.css */
+/* pages/novoCliente/novoCliente.css */
 
-.ns-page {
+.nc-page {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
 /* ── Topo ── */
-.ns-topo {
+.nc-topo {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.ns-titulo {
+.nc-titulo {
   font-size: 18px;
   font-weight: 600;
   color: #1a1a2e;
 }
 
-.ns-sub {
+.nc-sub {
   font-size: 11px;
   color: #a09ebb;
   margin-top: 2px;
 }
 
 /* ── Layout ── */
-.ns-layout {
+.nc-layout {
   display: grid;
   grid-template-columns: 1fr 280px;
   gap: 14px;
@@ -57,14 +57,14 @@
 }
 
 /* ── Formulário ── */
-.ns-form {
+.nc-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
   padding: 16px;
 }
 
-.ns-field {
+.nc-field {
   display: flex;
   flex-direction: column;
 }
@@ -122,30 +122,8 @@
   min-height: 90px;
 }
 
-/* ── Seletor de status ── */
-.status-options {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.status-opt {
-  padding: 6px 14px;
-  border-radius: 8px;
-  border: 1.5px solid #e8e6f8;
-  background: #fafafa;
-  color: #6b6887;
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  font-family: inherit;
-  transition: all 0.15s;
-}
-.status-opt:hover { background: #f0eef8; border-color: #c4c2e8; }
-.status-opt.ativo { font-weight: 600; }
-
 /* ── Ações ── */
-.ns-acoes {
+.nc-acoes {
   padding: 12px 16px;
   border-top: 1px solid #e8e6f8;
   display: flex;
@@ -182,88 +160,87 @@
 .btn-salvar:hover { background: #2e2868; }
 
 /* ── Preview ── */
-.ns-preview-col {
+.nc-preview-col {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.ns-preview {
+.nc-preview {
   padding: 20px 16px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-}
-
-.ns-prev-cliente,
-.ns-prev-vazio {
-  display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
-.ns-avatar {
-  width: 44px;
-  height: 44px;
+.nc-avatar {
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: #eeedfe;
   color: #3c3489;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
-  flex-shrink: 0;
+  margin-bottom: 4px;
 }
 
-.ns-prev-nome {
-  font-size: 13px;
+.nc-preview-nome {
+  font-size: 14px;
   font-weight: 600;
   color: #1a1a2e;
+  text-align: center;
 }
 
-.ns-prev-plano {
+.nc-preview-plano {
   font-size: 11px;
-  color: #a09ebb;
-  margin-top: 2px;
-}
-
-.ns-prev-divider {
-  height: 1px;
-  background: #f0eef8;
-}
-
-/* Infos */
-.ns-prev-info {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.ns-info-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 12px;
-}
-
-.ns-info-lbl { color: #a09ebb; }
-.ns-info-val { color: #1a1a2e; font-weight: 500; }
-
-.ns-dia-semana {
-  color: #a09ebb;
-  font-weight: 400;
-}
-
-.ns-status-badge {
-  padding: 2px 9px;
-  border-radius: 8px;
-  font-size: 11px;
+  background: #eeedfe;
+  color: #3c3489;
+  padding: 2px 10px;
+  border-radius: 10px;
   font-weight: 500;
 }
 
+.nc-preview-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  border-top: 1px solid #f0eef8;
+  padding-top: 12px;
+}
+
+.nc-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+}
+
+.nc-info-lbl { color: #a09ebb; }
+.nc-info-val { color: #1a1a2e; font-weight: 500; }
+
+/* Freq dots */
+.nc-freq-dots {
+  display: flex;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.fd {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.fd-on  { background: #534ab7; }
+.fd-off { background: #e8e6f8; }
+
 /* ── Dica ── */
-.ns-dica {
+.nc-dica {
   background: #fff;
   border: 1px solid #e8e6f8;
   border-radius: 12px;
@@ -274,9 +251,12 @@
   box-shadow: 0 2px 12px rgba(60,52,137,0.08);
 }
 
-.ns-dica-icon { font-size: 18px; flex-shrink: 0; }
+.nc-dica-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
 
-.ns-dica p {
+.nc-dica p {
   font-size: 11px;
   color: #6b6887;
   line-height: 1.6;

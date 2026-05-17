@@ -173,6 +173,11 @@ function DetalhesMes({ ano, mes, dados }) {
   return (
     <div className="mes-detalhe">
 
+      {/* Título */}
+      <div style={{ fontSize: 14, fontWeight: 600, color: '#1a1a2e' }}>
+        {NOMES_MESES[mes]} · {ano}
+      </div>
+
       {/* Métricas */}
       <div className="mes-metricas">
         <div className="mes-metric">

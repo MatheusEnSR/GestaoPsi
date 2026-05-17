@@ -7,6 +7,9 @@ import Header   from '../../components/header/header';
 import Clientes from '../cliente/cliente';
 import Agenda from '../agenda/agenda';
 import Arquivo from '../arquivo/arquivo';
+import Planos from '../planos/planos';
+import NovoCliente from '../novoCliente/novoCliente';
+import NovaSessao from '../sessao/sess';
 
 // ── páginas em breve ──
 const EmBreve = ({ nome }) => (
@@ -171,7 +174,9 @@ function Home() {
       case 'clientes':  return <Clientes />;
       case 'agenda': return <Agenda />;
       case 'arquivo': return <Arquivo />;
-      case 'planos':    return <EmBreve nome="Planos de saúde" />;
+      case 'planos': return <Planos />;
+      case 'novo-cliente': return <NovoCliente onCancelar={() => setPaginaAtual('clientes')} />;
+      case 'nova-sessao': return <NovaSessao onCancelar={() => setPaginaAtual('agenda')} />;
       default:          return <DashboardContent />;
     }
   }
