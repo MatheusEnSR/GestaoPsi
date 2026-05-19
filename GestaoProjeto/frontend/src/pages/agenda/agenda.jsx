@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import './agenda.css';
 
+// ── Dados mockup ──────────────────────────────────────────
 const HORARIOS = [
   '07:00','08:00','09:00','10:00','11:00',
   '12:00','13:00','14:00','15:00','16:00',
@@ -44,6 +45,14 @@ const STATUS_COR = {
   falta:      { bg: '#FAEEDA', cor: '#633806', borda: '#EF9F27' },
 };
 
+const STATUS_OPTIONS = [
+  { value: 'confirmada', label: 'Confirmada', bg: '#EEEDFE', cor: '#3C3489' },
+  { value: 'realizada',  label: 'Realizada',  bg: '#EAF3DE', cor: '#3B6D11' },
+  { value: 'cancelada',  label: 'Cancelada',  bg: '#FCEBEB', cor: '#791F1F' },
+  { value: 'falta',      label: 'Falta',      bg: '#FAEEDA', cor: '#633806' },
+];
+
+// ── Ícone de status ───────────────────────────────────────
 function StatusIcon({ status }) {
   if (status === 'confirmada') return (
     <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
@@ -70,10 +79,11 @@ function StatusIcon({ status }) {
   return null;
 }
 
+// ── Modal agendar sessão ──────────────────────────────────
 function ModalSessao({ open, diaInicial, horarioInicial, onClose, onSalvar }) {
   const [form, setForm] = useState({
     cliente: '',
-    dia:     diaInicial    || 'Seg',
+    dia:     diaInicial     || 'Seg',
     horario: horarioInicial || '09:00',
     status:  'confirmada',
   });
@@ -91,12 +101,10 @@ function ModalSessao({ open, diaInicial, horarioInicial, onClose, onSalvar }) {
   return (
     <div className="modal-overlay" onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
       <div className="modal-box">
-
         <div className="modal-head">
           <span className="modal-titulo">Agendar sessão</span>
           <button className="modal-fechar" onClick={onClose}>×</button>
         </div>
-
         <div className="modal-body">
           <div className="form-grid">
 
@@ -125,27 +133,78 @@ function ModalSessao({ open, diaInicial, horarioInicial, onClose, onSalvar }) {
             <div className="form-full">
               <label className="f-label">Status</label>
               <select className="f-select" value={form.status} onChange={e => set('status', e.target.value)}>
-                <option value="confirmada">Confirmada</option>
-                <option value="realizada">Realizada</option>
-                <option value="cancelada">Cancelada</option>
-                <option value="falta">Falta</option>
+                {STATUS_OPTIONS.map(s => (
+                  <option key={s.value} value={s.value}>{s.label}</option>
+                ))}
               </select>
             </div>
 
           </div>
         </div>
-
         <div className="modal-footer">
           <button className="btn-cancelar" onClick={onClose}>Cancelar</button>
           <button className="btn-salvar" onClick={handleSalvar}>Agendar sessão</button>
         </div>
-
       </div>
     </div>
   );
 }
 
-function VistaSemana({ sessoes, onClickCelula }) {
+// ── Modal editar status da sessão ─────────────────────────
+function ModalEditarSessao({ open, sessao, onClose, onSalvar }) {
+  const [status, setStatus] = useState(sessao?.status ?? 'confirmada');
+
+  // Remove o useEffect por completo — usa key no componente pai pra resetar
+
+  if (!open || !sessao) return null;
+
+  return (
+    <div className="modal-overlay" onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
+      <div className="modal-box">
+        <div className="modal-head">
+          <span className="modal-titulo">Editar sessão</span>
+          <button className="modal-fechar" onClick={onClose}>×</button>
+        </div>
+        <div className="modal-body">
+
+          <div className="edit-sess-info">
+            <div className="edit-sess-nome">{sessao.nome}</div>
+            <div className="edit-sess-meta">{sessao.dia} · {sessao.horario} · {sessao.plano}</div>
+          </div>
+
+          <div style={{ marginTop: 16 }}>
+            <label className="f-label">Status</label>
+            <div className="status-options">
+              {STATUS_OPTIONS.map(s => (
+                <button
+                  key={s.value}
+                  className={`status-opt ${status === s.value ? 'ativo' : ''}`}
+                  style={status === s.value
+                    ? { background: s.bg, color: s.cor, borderColor: s.cor }
+                    : {}
+                  }
+                  onClick={() => setStatus(s.value)}
+                >
+                  {s.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+        </div>
+        <div className="modal-footer">
+          <button className="btn-cancelar" onClick={onClose}>Cancelar</button>
+          <button className="btn-salvar" onClick={() => { onSalvar(sessao.id, status); onClose(); }}>
+            Salvar
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Vista semana ──────────────────────────────────────────
+function VistaSemana({ sessoes, onClickCelula, onClickSessao }) {
   return (
     <div className="semana-wrap">
       <div className="legenda">
@@ -181,8 +240,8 @@ function VistaSemana({ sessoes, onClickCelula }) {
                         key={s.id}
                         className="ag-evt"
                         style={{ background: est.bg, color: est.cor, borderLeftColor: est.borda }}
-                        onClick={e => e.stopPropagation()}
                         title={`${s.nome} · ${s.status}`}
+                        onClick={e => { e.stopPropagation(); onClickSessao(s); }}
                       >
                         <StatusIcon status={s.status} />
                         <span>{s.nome.split(' ')[0]}</span>
@@ -199,6 +258,7 @@ function VistaSemana({ sessoes, onClickCelula }) {
   );
 }
 
+// ── Vista mês ─────────────────────────────────────────────
 function VistaMes({ sessoes, onClickDia }) {
   const diasSemana = ['Seg','Ter','Qua','Qui','Sex','Sáb','Dom'];
   const diasMes    = Array.from({ length: 31 }, (_, i) => i + 1);
@@ -239,17 +299,25 @@ function VistaMes({ sessoes, onClickDia }) {
   );
 }
 
+// ── Componente principal ──────────────────────────────────
 function Agenda() {
-  const [vista,    setVista]    = useState('semana');
-  const [sessoes,  setSessoes]  = useState(SESSOES_MOCK);
-  const [modal,    setModal]    = useState(false);
-  const [diaAtual, setDiaAtual] = useState('Seg');
-  const [hrAtual,  setHrAtual]  = useState('09:00');
+  const [vista,       setVista]       = useState('semana');
+  const [sessoes,     setSessoes]     = useState(SESSOES_MOCK);
+  const [modal,       setModal]       = useState(false);
+  const [modalEditar, setModalEditar] = useState(false);
+  const [sessaoEdit,  setSessaoEdit]  = useState(null);
+  const [diaAtual,    setDiaAtual]    = useState('Seg');
+  const [hrAtual,     setHrAtual]     = useState('09:00');
 
   function abrirModal(dia, horario) {
     setDiaAtual(dia);
     setHrAtual(horario);
     setModal(true);
+  }
+
+  function abrirEditar(sessao) {
+    setSessaoEdit(sessao);
+    setModalEditar(true);
   }
 
   function salvarSessao(form) {
@@ -264,6 +332,12 @@ function Agenda() {
     setSessoes(prev => [...prev, nova]);
   }
 
+  function salvarStatus(id, novoStatus) {
+    setSessoes(prev =>
+      prev.map(s => s.id === id ? { ...s, status: novoStatus } : s)
+    );
+  }
+
   return (
     <div className="agenda-page">
 
@@ -274,16 +348,10 @@ function Agenda() {
         </div>
         <div className="agenda-acoes">
           <div className="vista-toggle">
-            <button
-              className={`vista-btn ${vista === 'semana' ? 'ativo' : ''}`}
-              onClick={() => setVista('semana')}
-            >
+            <button className={`vista-btn ${vista === 'semana' ? 'ativo' : ''}`} onClick={() => setVista('semana')}>
               Semana
             </button>
-            <button
-              className={`vista-btn ${vista === 'mes' ? 'ativo' : ''}`}
-              onClick={() => setVista('mes')}
-            >
+            <button className={`vista-btn ${vista === 'mes' ? 'ativo' : ''}`} onClick={() => setVista('mes')}>
               Mês
             </button>
           </div>
@@ -295,7 +363,7 @@ function Agenda() {
 
       <div className="card agenda-card">
         {vista === 'semana'
-          ? <VistaSemana sessoes={sessoes} onClickCelula={abrirModal} />
+          ? <VistaSemana sessoes={sessoes} onClickCelula={abrirModal} onClickSessao={abrirEditar} />
           : <VistaMes    sessoes={sessoes} onClickDia={() => abrirModal('Seg', '09:00')} />
         }
       </div>
@@ -307,6 +375,14 @@ function Agenda() {
         onClose={() => setModal(false)}
         onSalvar={salvarSessao}
       />
+
+      <ModalEditarSessao
+  key={sessaoEdit?.id}        // ← isso substitui o useEffect
+  open={modalEditar}
+  sessao={sessaoEdit}
+  onClose={() => setModalEditar(false)}
+  onSalvar={salvarStatus}
+/>
 
     </div>
   );

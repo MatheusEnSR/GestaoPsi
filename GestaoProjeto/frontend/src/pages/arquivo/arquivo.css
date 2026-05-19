@@ -475,3 +475,280 @@
 
 @keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideUp { from { transform: translateY(12px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* ── Adicionar no arquivo.css ── */
+
+/* Instrução */
+.cal-instrucao {
+  font-size: 11px;
+  color: #6b6887;
+  background: #f5f4fc;
+  border: 1px solid #e8e6f8;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+/* Calendário editável */
+.cal-edit-wrap {
+  overflow-x: auto;
+}
+
+.cal-edit-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+  min-width: 560px;
+}
+
+.cal-dlbl {
+  font-size: 9px;
+  color: #a09ebb;
+  font-weight: 600;
+  padding: 4px 0;
+  text-transform: uppercase;
+}
+
+.cal-edit-day {
+  border: 1px solid #e8e6f8;
+  border-radius: 8px;
+  padding: 6px 4px;
+  min-height: 64px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  transition: background 0.1s, border-color 0.1s;
+}
+.cal-edit-day:hover {
+  background: #f0eef8;
+  border-color: #534ab7;
+}
+.cal-edit-day.today-d { border-color: #3c3489; }
+
+.cal-edit-num {
+  font-size: 11px;
+  font-weight: 500;
+  color: #6b6887;
+  text-align: left;
+  padding-left: 2px;
+}
+.cal-edit-day.today-d .cal-edit-num { color: #3c3489; font-weight: 700; }
+
+.cal-edit-sess {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-size: 9px;
+  font-weight: 500;
+  border-left: 3px solid;
+  text-align: left;
+}
+
+.cal-edit-add {
+  font-size: 8px;
+  color: #c4c2e8;
+  margin-top: auto;
+  text-align: center;
+}
+.cal-edit-day:hover .cal-edit-add { color: #534ab7; }
+
+/* ── Modal dia ── */
+.dia-vazio {
+  font-size: 12px;
+  color: #a09ebb;
+  text-align: center;
+  padding: 16px 0;
+}
+
+.dia-sessao-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0eef8;
+}
+.dia-sessao-row:last-of-type { border-bottom: none; }
+
+.dia-sess-av {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.dia-sess-nome {
+  font-size: 12px;
+  font-weight: 500;
+  color: #1a1a2e;
+}
+
+.dia-sess-meta {
+  font-size: 10px;
+  color: #a09ebb;
+  margin-top: 1px;
+}
+
+.dia-status-sel {
+  font-size: 11px;
+  font-weight: 500;
+  border: 1.5px solid;
+  border-radius: 6px;
+  padding: 4px 8px;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+  appearance: none;
+  flex-shrink: 0;
+}
+
+.dia-del-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #c4c2e8;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 2px;
+  flex-shrink: 0;
+}
+.dia-del-btn:hover { color: #791f1f; }
+
+/* Formulário de adicionar sessão no dia */
+.dia-add-form {
+  margin-top: 12px;
+  padding: 14px;
+  background: #f5f4fc;
+  border-radius: 10px;
+  border: 1px solid #e8e6f8;
+}
+
+.dia-add-row {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: 10px;
+}
+
+.dia-add-acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* Botão adicionar sessão */
+.dia-add-btn {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px;
+  border: 1.5px dashed #c4c2e8;
+  border-radius: 8px;
+  background: none;
+  color: #9896b0;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.dia-add-btn:hover {
+  border-color: #534ab7;
+  color: #3c3489;
+  background: #f5f4fc;
+}
+
+/* Status options */
+.status-options {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.status-opt {
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #e8e6f8;
+  background: #fafafa;
+  color: #6b6887;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.status-opt:hover { background: #f0eef8; border-color: #c4c2e8; }
+.status-opt.ativo  { font-weight: 600; }
+
+/* Resumo clientes */
+.sec-label {
+  font-size: 10px;
+  color: #a09ebb;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.cli-mes-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-bottom: 1px solid #f0eef8;
+}
+.cli-mes-row:last-child { border-bottom: none; }
+
+.cli-mes-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #eeedfe;
+  color: #3c3489;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.cli-mes-nome {
+  font-size: 12px;
+  font-weight: 500;
+  color: #1a1a2e;
+  margin-bottom: 3px;
+}
+
+.chips-wrap { display: flex; gap: 3px; flex-wrap: wrap; }
+
+.chip-dia {
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 500;
+}
+
+.cli-mes-sessoes {
+  font-size: 12px;
+  font-weight: 600;
+  color: #534ab7;
+  font-family: monospace;
+  text-align: right;
+}
+
+.cli-mes-total {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a1a2e;
+  font-family: monospace;
+  text-align: right;
+}
